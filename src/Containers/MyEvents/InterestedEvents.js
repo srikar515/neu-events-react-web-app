@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import './MyEvents.scss'
 import './InterestedEvents.scss'
 import { Link } from "react-router-dom";
+const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:9002";
 
 //Maps store to props
 const mapStoreToProps = (state) => ( state.myEventlist ) 
@@ -55,7 +56,7 @@ export class InterestedEventsComponent extends Component {
         let interestedEventlist=[]
         console.log("Call Api")
         for(i;i< this.state.eventsInterested.length;i++){
-            const response = await fetch(`http://localhost:9002/eventsData/${this.state.eventsInterested[i]}`)
+            const response = await fetch(`${API_BASE}/eventsData/${this.state.eventsInterested[i]}`)
             const json = await response.json()
             interestedEventlist.push(json[0])
           }

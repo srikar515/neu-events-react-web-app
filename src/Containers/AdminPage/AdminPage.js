@@ -7,6 +7,8 @@ import { addEventAction, deleteEventAction } from "../../Store/Actions/EventsAct
 import { connect } from "react-redux";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+
+
 const AdminPage= (props) => {
   //Navigate is used to moved from one location to another.
   const navigate = useNavigate();
