@@ -28,6 +28,10 @@ const RoutesComponent = (props) => {
     return (
       <Router>
         <Routes>
+        <Route path="/login" element = {<Login/>} />
+        <Route path="/signup" element = {<SignUp/>} />
+        <Route path="/forgot-password" element = {<ForgotPassword/>} />
+        <Route path="/home" element = {<HomeScreen/>}/>
           <Route element = {<SideNav/>}>
             <Route path="/profile" element = {<ProtectedRoute/>}>
               <Route path="/profile" element = {<UserProfile/> }/>
@@ -55,10 +59,6 @@ const RoutesComponent = (props) => {
           <Route path="/admin" element = {<AdminPage/> }/>
         </Route>
 
-        <Route path="/login" element = {<Login/>} />
-        <Route path="/signup" element = {<SignUp/>} />
-        <Route path="/forgot-password" element = {<ForgotPassword/>} />
-        <Route path="/home" element = {<HomeScreen/>}/>
         </Routes>
     </Router>
     )
