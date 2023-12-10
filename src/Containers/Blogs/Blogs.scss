@@ -1,0 +1,105 @@
+@import '../../Styles/variables.scss';
+@import '../../Styles/mixins.scss';
+//Nested Variabled and mixins are used.
+.blogs-container {
+    @include display;
+    flex-wrap: wrap;
+    width: $width;
+    .blogitem {
+        width: 40%;
+        margin: 20px;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: $white-colour;
+        box-shadow: 0 0 25px #0000004d;
+        position: relative;
+        display: block;
+        transition: transform 500ms;
+        text-align: center;
+        color: #0000008c;
+        font-size:18px;
+        font-family: $cambria-font-family;;
+        font-weight: bold;
+        .text ~ p {
+            font-style: italic;
+            font-weight: bold;
+        }
+        img {
+            display: block;
+            width: $width;
+            filter: brightness(50%);
+        }
+        .blogtitle {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffffcc;
+            font-size: 25px;
+        }
+    }
+}
+
+.new-blog-form {
+    background-color: $white-colour;
+    padding: 10px;
+    border-radius: 15px;
+    color: $black-colour;
+    margin-top: 25px;
+    box-shadow: 5px 5px 5px 5px rgb(0 0 0 / 10%);
+    li {
+        list-style-type: none;
+        input {
+            margin-bottom: 20px;
+            border-top-style: hidden;
+            border-right-style: hidden;
+            border-left-style: hidden;
+            border-bottom: 1px solid #0000003b;
+            background-color: transparent;
+            font-size:14pt;
+            font-family: $cambria-font-family;;
+            font-weight: bold;
+        }
+        textarea {
+            margin-bottom: 30px;
+            background-color: transparent;
+        }
+    }
+    .post-button {
+        background-color: $text-red;
+        height: 35px;
+        width: 70px;
+        border-radius: 5px;
+        color: $white-colour;
+        font-size: 18px;
+        border: 0px;
+        margin-left: 4%;
+        font-family: $cambria-font-family;;
+        font-weight: bold;
+    }
+    .title {
+        width: 600px;
+    }
+    .description {
+        height:200px;
+        width: $width;
+        font-size:14pt;
+        font-family: $cambria-font-family;
+    }
+    .imgUrl {
+        width: 800px;
+    }
+}
+
+.write-blog-button {
+    background-color: $text-red;
+    height: 35px;
+    width: 120px;
+    border-radius: 5px;
+    color: $white-colour;
+    font-size: 18px;
+    border: 0px;
+    margin-left: 515px;
+    font-family: $cambria-font-family;
+    font-weight: bold;
+}

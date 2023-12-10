@@ -1,0 +1,115 @@
+@import '../../../Styles/variables.scss';
+@import '../../../Styles/mixins.scss';
+//Used mixins, nested variables and CSS to style the Events search bar functionality.
+.events{
+    @include display;
+    flex-wrap: wrap;
+    margin-left: 5%;
+}
+
+.eventDetails {
+    margin : 20px;
+    box-sizing: border-box;
+}
+
+.eventDetails {
+    font-family: Arial, Helvetica, sans-serif; 
+}
+
+.details {
+    padding: 10px;
+    box-shadow: 0 0 25px #0000004d;
+    background-color: $white-colour;
+    transition: transform 450ms;
+    border-radius: 10px;
+    width: 300px;
+    height: 350px;
+    .event-name{
+        text-align: center;
+        font-family: $font-family;
+        font-weight: bolder;
+        font-size: large;
+        margin-block-start:0em;
+        margin-block-end: 0em;
+    }
+    .event-date-time{
+        @include display;
+        justify-content: space-around;
+        font-family: $font-family;
+        font-weight: bold;
+        font-size: medium;
+        svg{
+            margin-bottom: -3px;
+        }
+    }
+}
+
+.details::-webkit-scrollbar{
+    display: none;
+}
+
+.details:hover {
+    transform: scale(1.08);
+}
+
+.row__poster{
+    border-radius: 10px; 
+}
+
+.buttons{
+    
+    button {
+        border: 0px;
+        background-color: $text-red;
+        height: 25px;
+        width: 70px;
+        border-radius: 5px;
+        color: $white-colour;
+        font-size: 25px;
+        margin: 3%;
+        font-family: $cambria-font-family;
+        @include button;
+    }
+}
+.search{
+    margin-left: 25%;
+    margin-bottom: 30px;
+    div{
+        div{
+            width: 120%;
+        }
+    }
+
+}
+
+.bookmark-image-container {
+    position: relative;
+    width: $width;
+    max-width: 400px;
+    button {
+        position: absolute;
+        top: 10%;
+        left: 92%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        background: transparent;
+        color: white;
+        font-size: 20px;
+        padding: 12px 24px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        text-align: center;
+        .bookmark_icon {
+            color: #b7a3a5;
+            width: 1.2em;
+            height: 1.4em;
+        }
+        .bookmark_icon_selected {
+            color: $text-red;
+            width: 1.2em;
+            height: 1.4em;
+        }
+    }
+}
+

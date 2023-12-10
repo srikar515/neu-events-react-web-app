@@ -1,0 +1,15 @@
+@import '../../../Styles/variables.scss';
+@import '../../../Styles/mixins.scss';
+//Mixin To represent the Maps Page.
+.viewMapBtn{
+    @include button;
+    @include button-container;
+    width: 125px;
+    margin-left: 45%;
+    margin-bottom: 50px;
+    
+   svg{
+    margin-top: 0px;;
+   }
+    
+}

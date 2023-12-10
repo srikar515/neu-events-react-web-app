@@ -1,0 +1,51 @@
+@import '../../Styles/variables.scss';
+@import '../../Styles/mixins.scss';
+//Used variables, mixins and nested variables to style this page.
+.login-outer-container {
+    background-color: $black-colour;
+   @include display;
+    height: 1000px;
+}
+
+
+.right-container 
+{
+    form {
+    width: 450px;
+    h1,p {
+        text-align: center;
+        a {
+            color: $white-colour;
+        }
+    }
+}
+}
+.username-container {
+    padding: 8px;
+}
+
+.password-container {
+    @extend .username-container;
+}
+
+.login-button-container {
+    width: 98%;
+    padding: 0px;
+    button {
+        border: 0px;
+        background-color: $text-red;
+        height: 35px;
+        width: $width;
+        border-radius: 5px;
+        color: $white-colour;
+        font-size: 14px;
+        margin: 10px;
+    }
+}
+
+.form-input {
+    width: $width;
+    height: 35px;
+    border-radius: 5px;
+    font-size: 14px;
+}

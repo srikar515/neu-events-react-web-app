@@ -1,0 +1,23 @@
+
+@use "sass:math";
+@import '../../Styles/_variables.scss';
+@import '../../Styles/_mixins.scss';
+
+.loader-container {
+    @include display;
+    width: $width;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: $primary-beige-opacity;
+
+    img {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+.mini-loader{
+    width: $width;
+    height: math.div($width, 2);
+}

@@ -1,0 +1,14 @@
+@import '../../../Styles/variables.scss';
+@import '../../../Styles/mixins.scss';
+//Mixins are used to style the Share Page.
+ol{
+    list-style-type: none;  
+}
+
+.view-header{
+    @include display;
+    margin-bottom: 20px;
+}
+.share-container{
+    margin-left: 81%;
+}

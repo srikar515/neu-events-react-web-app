@@ -1,0 +1,10 @@
+@import '../../Styles/mixins.scss';
+.event-container{
+    display: grid;
+    justify-content: space-evenly;
+    @include display;
+    flex-wrap: wrap;
+    // grid-template-columns: 320px 320px 320px;
+    // gap: 30px 30px;
+    margin:10px;
+}

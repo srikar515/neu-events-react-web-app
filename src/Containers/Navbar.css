@@ -1,0 +1,17 @@
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0f172a;
+}
+.title{
+    color: white;
+}
+.login-pages{
+    display: flex;
+    flex-direction: row;
+}
+.nav-link{
+ color: white;
+ padding: 10px;
+}

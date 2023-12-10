@@ -1,0 +1,129 @@
+@import '../../Styles/_variables.scss';
+@import '../../Styles/_mixins.scss';
+//Nested Variables and include has been implemented
+.main-layout-container {
+    width: $width;
+    .layout-container {
+        width: $width;
+        @include display;
+        .side-wrapper {
+            width: 15%;
+            .side-wrapper-child {
+                background-color: $black-colour;
+                height: $height;
+                width: 15%;
+                position: fixed;
+                @include display;
+                flex-direction: column;
+                // justify-content: space-evenly;
+                .logo-image-container {
+                    height: 15%;
+                    width: 50%;
+                    img {
+                        width: $width;
+                        height: auto;
+                    }
+                }
+                .side-nav {
+                    width: 85%;
+                    height: 50%;
+                    margin: auto;
+                    @include display;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    font-family : $cambria-font-family;
+                    
+                    p {
+                        @include display;
+                        width: $width;
+                        .myprofile-icon, .explore-icon, .myevents-icon, .calendar-icon, .blogs-icon {
+                            color:$text-red;
+                        }
+                        svg {
+                            width: 20%;
+                        }
+                        a {
+                            width: 70%;
+                            color: $white-colour;
+                            text-decoration: none;
+                            font-size: 1.4vw;
+                            margin: auto;
+                            font-family : $cambria-font-family;
+                            // margin-left: 12px;
+                            // margin-top: 2px;
+                            padding: auto;
+                        }
+                    }
+                    
+                }
+            }
+        }
+        .header-content-wrapper {
+            width: 85%;
+            @include display;
+            flex-direction: column;
+            height: $height;
+            .header-wrapper {
+                height: 100px;
+                z-index: 2;
+                .header-wrapper-child {
+                    @include display;
+                    position: fixed;
+                    height: 100px;
+                    background-color: $black-colour;
+                    width: 85%;
+                    // z-index: 1;
+                    h1 {
+                        width: 90%;
+                        color: $white-colour;
+                        text-align: center;
+                        font-family: $cambria-font-family;
+                    }
+                    h1 ~ div {
+                        width: 12%;
+                        .bookmark {
+                            width: 50%;
+                            height: 30px;
+                            background-color: $text-red;
+                            border: $black-colour;
+                            border-radius: 5px;
+                            color: $white-colour;
+                            font-size: 14px;
+                            margin-top: 35px;
+                            margin-right: 8px;
+                            background: transparent;
+                            svg{
+                                color: $text-red;
+                                height: 1.5em;
+                                width: 1.5em;
+                            }
+                        }
+                        .logout{
+                            width: 90%;
+                            height: 30px;
+                            background-color: $text-red;
+                            border: $black-colour;
+                            border-radius: 5px;
+                            color: $white-colour;
+                            font-size: 18px;
+                            margin-top: 35px;
+                            font-family: $cambria-font-family;
+                            @include button;
+                        }
+                    }
+                }
+            }
+            .header-wrapper ~ div {
+                width: 95%;
+                height: 100vh;
+                margin: 30px;
+            } 
+        }
+    }
+}
+.header-buttons{
+    @include display;
+    .bookmark{
+        width:10px;
+    }    
+}

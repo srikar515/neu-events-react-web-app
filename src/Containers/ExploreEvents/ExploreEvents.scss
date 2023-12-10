@@ -1,0 +1,18 @@
+@import '../../Styles/mixins.scss';
+.search-bar {
+     width: 60%;
+     margin-left: 25%;
+     height: 35px;
+     border-radius: 20px;
+     margin-bottom: 20px;
+}
+.event-container{
+    display: grid;
+    justify-content: space-evenly;
+    @include display;
+    flex-wrap: wrap;
+    // grid-template-columns: 320px 320px 320px;
+    // gap: 30px 30px;
+    margin:10px;
+}
+

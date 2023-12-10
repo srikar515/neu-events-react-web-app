@@ -1,0 +1,54 @@
+@import '../../../Styles/variables.scss';
+@import '../../../Styles/mixins.scss';
+//Mixins are implemented for styling the Event Info.
+.event-info-outer {
+    @include display;
+    margin: auto;
+    flex-direction: column;
+    width: $width;
+}
+.event-info-inner {
+    @include display;
+    margin: auto;
+    flex-direction: column;
+    width: 80%;
+}
+.event-image {
+    margin: auto;
+    width: $width;
+    height: 500px;
+    filter: brightness(50%);
+}
+.event-info {
+    position: absolute;
+    top: 60%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    font-family: $cambria-font-family;
+    color: $white-colour;
+    font-weight: bolder;
+    font-size: 40px;
+    h2 {
+        text-align: center;
+    }
+}
+.event-description {
+    font-family: $font-family;
+    font-size: 24px;
+    font-weight: bold;
+}
+.backBtn {
+    background-color: $text-red ;
+        width: 80px;
+        margin-left: 4%;
+
+        height: 35px;
+        border-radius: 5px;
+        color: $white-colour;
+        font-size: 18px;
+        border: 0px;
+        padding: 5px;
+        font-family: $cambria-font-family;
+        font-weight: bold;
+        @include button;
+}

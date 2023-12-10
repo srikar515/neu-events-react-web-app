@@ -1,0 +1,32 @@
+@import '../../Styles/variables.scss';
+@import '../../Styles/mixins.scss';
+//Used variables,mixins and nested variables for styling of the page.
+.eventDetails_interested{
+    @include display;
+    width: $width;
+    border-style: double;
+    .buttons_interested {
+        @include display;
+        justify-content: space-around;
+        button {
+            color: $text-red;
+            background: transparent;
+            border: 0px;
+        }
+    }
+    p {
+        width: 90%;
+        margin-left: 10px;
+        font-family: $cambria-font-family;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    div {
+        width: 10%;
+        margin: auto;
+    }
+}
+.eventDetails_interested_outer {
+    @include display;
+    flex-direction: column;
+}

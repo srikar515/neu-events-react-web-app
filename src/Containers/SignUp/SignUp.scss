@@ -1,0 +1,177 @@
+@import '../../Styles/variables.scss';
+@import '../../Styles/mixins.scss';
+//Used variables,mixins for styling this page
+.signUp-outer-container {
+    background-color: $black-colour;
+    @include display;
+    height: 1000px;
+}
+
+.logo-container {
+    background-image: url("./../../Assets/Images/NU\ Logo.png");
+    background-size: 100px;
+   height: 100px;
+   width: 100px;
+}
+
+.left-container {
+    width: 20%;
+}
+
+.right-container {
+    color: $white-colour;
+    margin-left: 200px;
+    margin-top: 100px;
+}
+
+.right-container form {
+    width: 600px;
+}
+
+.signupHeader{
+    text-align: center;
+}
+
+.signupPara {
+    @extend .signupHeader;
+}
+.userName_Container {
+    padding: 8px;
+}
+.email_Container {
+    @extend .userName_Container;
+}
+.frst_name_container {
+    @extend .userName_Container;
+}
+.lst_name_container {
+    @extend .userName_Container;
+}
+.radioButtonsContainer {
+    @extend .userName_Container;
+}
+
+.passcode {
+    @extend .userName_Container
+}
+.userName_email_Container {
+    @include display;
+    width: $width;
+    div {
+        width: 50%;
+    }
+}
+
+.form-input{
+    width: $width;
+    height: 35px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.frst_lst_names_container {
+    @extend .userName_email_Container;
+}
+.dob_gender_container {
+    padding: 8px;
+    height: 65px;
+    @extend .userName_email_Container;
+    div {
+        width: 98%;
+        height: 40px;
+        padding: 0px;
+    }
+}
+
+.dob_container{
+    @extend .userName_Container;
+    div{
+        button {
+            margin-left: 50px;
+        }
+        div {
+            background-color: $white-colour;
+        }
+        input {
+            font-size: 14px;
+            font-family: arial;
+        }
+    }
+}
+
+.radioButtonsContainer{
+    span {
+        color: #757575;
+        font-size: 14px;
+        font-family: arial;
+    }
+    div {
+        border-radius: 5px;
+        background-color: $white-colour;
+        height: $height;
+        justify-content: space-around;
+    }
+    label{
+        color: #757575;
+        font-family: 'semi bold';
+    }
+}
+.questionAnswerContainer {
+    background-color: $white-colour;
+    width: 98%;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.answerContainer input{
+    border: 0px;
+    width: 99%;
+    font-size: 14px;
+}
+.questionContainer {
+    color: #757575;
+    font-size: 14px;
+    label {
+        padding: 8px;
+    }
+    div {
+        font-size: 14px;
+        label {
+            font-size: 14px;
+            font-family: arial;
+        }
+        div {
+            width: 98%;
+        }
+    }
+}
+
+.button-container 
+    {
+        width: 98%;
+        padding: 0px;
+        h4 {
+            text-align: center;
+        }
+        button {
+            border: 0px;
+            background-color: $text-red;
+            height: 35px;
+            width: $width;
+            border-radius: 5px;
+            color: $white-colour;
+            font-size: 14px;
+            margin: 0px;
+            margin-top: 15px;
+    }
+}
+.SignUp-Container {
+    padding: 10px;
+    width: $width;
+    h4 {
+        a {
+            color: $white-colour;
+        }
+    }
+}

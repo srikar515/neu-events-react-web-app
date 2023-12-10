@@ -1,0 +1,136 @@
+
+
+@mixin button() {
+    cursor: pointer;
+}
+
+//Mixin function for Button Container
+@mixin button-container(){
+    background-color: $text-red;
+    height: 35px;
+    border-radius: 5px;
+    color: $white-colour;
+    font-size: 18px;
+    border: 0px;
+    padding: 5px;
+    font-family: $cambria-font-family;
+    font-weight: bold;
+}
+
+//Mixin for Outer Container for Login Screen
+@mixin loginOuterContainerLayout($display, $height, $borderWidth, $borderColor){
+    display: $display;
+    grid-template-columns: repeat(5, 1fr);
+    height:$height;
+    overflow: auto;
+    border: $borderWidth $borderColor;
+}
+
+//Mixin Function for display functionality
+@mixin display(){
+    display: flex;
+}
+
+//Mixin for Left Container for Login Screen
+@mixin loginLeftContainer($colSpan, $rowSpan, $cols, $rows, $display, $backgroundColor){
+    grid-column: $colSpan / span $cols;
+    grid-row : $rowSpan / span $rows;
+    //border: 2px solid black;
+    display: $display;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows:  repeat(6, 1fr);
+    background-color: $backgroundColor;
+}
+
+//Mixin for Right Container for Login Screen
+@mixin loginRightContainer($colStart, $colSpan, $rowStart, $rowSpan, $display, $backgroundColor, $opacity){
+    grid-column: $colStart /span $colSpan;
+    grid-row : $rowStart / span  $rowSpan;
+    //border: 2px solid black;
+    display: $display;
+    grid-template-columns:  repeat(4, 1fr);
+    grid-template-rows:  repeat(6, 1fr);
+    background-color:$backgroundColor;
+    opacity: $opacity ;
+}
+
+//Mixin for Left Inner Container for Login Screen
+@mixin loginLeftInnerContainer($colStart, $colSpan, $rowStart, $rowSpan, $borderRadius, $shadowColor, $display ) {
+    grid-column: $colStart / span $colSpan;
+    grid-row : $rowStart / span $rowSpan;
+    border-top-left-radius: $borderRadius;
+    border-bottom-left-radius: $borderRadius;
+    box-shadow: 0 0 $borderRadius $shadowColor;
+    display: $display;
+    grid-template-columns:  repeat(2, 1fr);
+    grid-template-rows:  repeat(4, 1fr);
+}
+
+//Mixin for Right Inner Container for Login Screen
+@mixin loginRightInnerContainer($colStart, $colSpan, $rowStart, $rowSpan, $borderRadius, $shadowColor, $textAlign){
+    grid-column: $colStart / span $colSpan;
+    grid-row : $rowStart / span $rowSpan;
+    border-top-right-radius: $borderRadius;
+    border-bottom-right-radius: $borderRadius;
+    box-shadow: 0 0 $borderRadius $shadowColor;
+    text-align: $textAlign;
+}
+
+//Mixin for Logo Container
+@mixin logoContainer($colStart, $colSpan, $rowStart, $rowSpan, $url, $backgroundSize, $backgroundRepeat, $backgroundPosition){
+    grid-column: $colStart/ span $colSpan;
+    grid-row : $rowStart / span $rowSpan;
+    background-image: url($url);
+    background-size: $backgroundSize;
+    background-repeat: $backgroundRepeat;
+    background-position: $backgroundPosition;
+}
+
+//Mixin for Styling of a Button
+@mixin styleButton($backgroundColor, $color, $height, $width, $borderRadius){
+    background-color: $backgroundColor;
+    color: $color;
+    height: $height;
+    width: $width;
+    border-radius:  $borderRadius;
+}
+
+//Mixin for styling of all the Inputs.
+@mixin styleInput( $height, $width, $border-Radius, $backgroundColor, $borderRadius, $borderType, $borderColor){
+    height:  $height;
+    width: $width;
+    border-radius: $border-Radius;
+    background-color: $backgroundColor;
+    border: $borderRadius $borderType $borderColor;
+}
+
+//Mixin for styling of Row of the Profile
+@mixin userProfileRowContainer($col, $colSpan, $row, $display, $padding, $columns, $rows) {
+    grid-column: $col / span $colSpan;
+    grid-row: $row;
+    display: grid;
+    padding: 5px;
+    grid-template-columns: repeat($columns, 1fr);
+    grid-template-rows: repeat($rows, 1fr);
+}
+
+//Mixin for styling of Column of the Profile
+@mixin userProfileColumnContainer($col, $row, $marginBottom, $width, $justifySelf) {
+    grid-column: $col;
+    grid-row: $row;
+    margin-bottom: $marginBottom;
+    width: $width;
+    justify-self: $justifySelf;
+}
+
+//Mixin for styling of Column of Input of the Profile
+@mixin userProfileColInputContainer($display, $paddingLeft, $outline, $borderRadius, $height, $width, $borderType, $borderColor, $backgroundColor) {
+    display: $display;
+    padding-left: $paddingLeft;
+    outline: $outline;
+    height: $height;
+    width: $width;
+    border: $borderRadius $borderType $borderColor;
+    background-color: rgba(250, 185, 154, 0.01);
+}
+

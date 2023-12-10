@@ -1,0 +1,75 @@
+ 
+@import '../../Styles/variables.scss';
+@import '../../Styles/mixins.scss';
+//Used variables,mixins and nested variables for styling of the page.
+.events{
+    @include display;
+    flex-wrap: wrap;
+    margin-left: 3%;
+}
+
+.eventDetails {
+    margin : 20px;
+    box-sizing: border-box;
+}
+
+.eventDetails {
+    font-family: Arial, Helvetica, sans-serif; 
+}
+
+.details {
+    padding: 10px;
+    //border: 1px solid rgb(103, 100, 100);
+    box-shadow: 0 0 25px #0000004d;
+    background-color: $white-colour;
+    transition: transform 450ms;
+    border-radius: 10px;
+    width: 300px;
+    height: 350px;
+    .event-name{
+        text-align: center;
+        font-family: $font-family;
+        font-weight: bolder;
+        font-size: large;
+        margin-block-start:0em;
+        margin-block-end: 0em;
+    }
+    .event-date-time{
+        @include display;
+        justify-content: space-around;
+        font-family: $font-family;
+        font-weight: bolder;
+        font-size: medium;
+    }
+}
+
+.details::-webkit-scrollbar{
+    display: none;
+}
+
+.details:hover {
+    transform: scale(1.08);
+}
+
+.row__poster{
+    border-radius: 10px; 
+}
+
+.buttons{
+    margin-left: 50px;
+    button {
+        border: 0px;
+        background-color: $text-red;
+        height: 25px;
+        width: 70px;
+        border-radius: 5px;
+        color: $white-colour;
+        font-size: 16px;
+        margin: 3%;
+        font-weight: bold;
+        //margin-left: -1%;
+    }
+    .unregisterBtn{
+        width: 90px;
+    }
+}
