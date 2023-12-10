@@ -12,6 +12,9 @@ import { Navigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+const WEB_URL= "https://neuevents.netlify.app"; 
+const LOCAL_URL="http://localhost:3000";
+
 const mapStateToProps = (state) => ({
     isUserSignedUp: state.Login.isUserSignedUp,
     signedUpUserDetails: state.Login.signedUpUserDetails
@@ -319,7 +322,7 @@ class SignUpComponent extends React.Component{
                                 <div className="button-container">
                                     <button type="submit">Join the club</button>
                                     {signUpError && <p>{signUpError}</p>}
-                                    <p>Already have an account? Login &nbsp;<a href="http://localhost:3000/login">here</a></p>
+                                    <p>Already have an account? Login &nbsp;<a href="https://neuevents.netlify.app/login">here</a></p>
                                 </div>
                             </div> 
                         </form>
