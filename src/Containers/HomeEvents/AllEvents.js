@@ -11,6 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { AiOutlineClockCircle } from 'react-icons/ai';
 import { BsCalendar2Date, BsFillBookmarkFill } from 'react-icons/bs';
 import { Link } from "react-router-dom";
+const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:9002";
 
 
 const mapStoreToProps = (state) => ( state.eventlist ) 
@@ -37,7 +38,7 @@ class AllEventsListComponent extends Component {
   
   //api call 
   callApi = () => {    
-    this.props.getEvents('http://localhost:9002/eventsData')
+    this.props.getEvents(`${API_BASE}/eventsData`)
   };
 
   callInterested = (eventId) =>{

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import FullCalendar from '@fullcalendar/react' // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
+const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:9002";
 
 export class Calendar extends Component {
   //Gets the Registered Events for the Loggedin Users.
@@ -21,7 +22,7 @@ export class Calendar extends Component {
         let i=0;
         let eventlist=[]
         for(i;i< this.state.eventsRegistered.length;i++){
-            const response = await fetch(`http://localhost:9002/eventsData/${this.state.eventsRegistered[i]}`)
+            const response = await fetch(`${API_BASE}/eventsData/${this.state.eventsRegistered[i]}`)
             //Created a eventlist array and push the registered events
             const json = await response.json()
             eventlist.push(json[0])

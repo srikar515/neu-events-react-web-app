@@ -7,6 +7,7 @@ import {  AiOutlineClockCircle } from 'react-icons/ai';
 import { BsCalendar2Date, BsFillBookmarkFill } from 'react-icons/bs';
 import './MyEvents.scss'
 import { Link } from "react-router-dom";
+const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:9002";
 
 //Maps and dispatch to props
 const mapStoreToProps = (state) => ( state.myEventlist ) 
@@ -54,7 +55,7 @@ export class MyEventsComponent extends Component {
         let eventlist=[]
         console.log("Call Api")
         for(i;i< this.state.eventsRegistered.length;i++){
-            const response = await fetch(`http://localhost:9002/eventsData/${this.state.eventsRegistered[i]}`)
+            const response = await fetch(`${API_BASE}/eventsData/${this.state.eventsRegistered[i]}`)
             const json = await response.json()
             eventlist.push(json[0])
           }

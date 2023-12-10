@@ -5,6 +5,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import BlogForm from './BlogForm'
+const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:9002";
 
 const mapStoreToProps = (state) => ( state.blogs );
 
@@ -40,7 +41,7 @@ class BlogsComponent extends Component {
   
   //api call 
   callApi = () => {    
-    this.props.getBlogs('http://localhost:9002/blogsData')
+    this.props.getBlogs(`${API_BASE}/blogsData`)
   };
 
   render() {

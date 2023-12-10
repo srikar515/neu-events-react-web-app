@@ -1,6 +1,8 @@
 import { HTTP } from './../../HTTP';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:9002";
+
 export const LoginActionTypes = {
     LOGIN_USER : "[User] logged in user",
     SIGNUP_USER : "[User] signup a user",
@@ -98,7 +100,7 @@ const updateUserDetailsAction = (payload, callingComponent) => {
 export const signUpUser = (payload) => {
     return async(dispatch) => {
         try{
-            const url = 'http://localhost:9002/users';
+            const url = `${API_BASE}/users`;
             const response = await HTTP.post(url,payload)
             if (response.status === 200) {
                 sessionStorage.setItem("user", JSON.stringify(response.data.user));
@@ -116,7 +118,7 @@ export const handleUserVerification = (payload) => {
         let username = payload.username;
         const body = {username: username, password : payload.password}
         try{
-            const url = 'http://localhost:9002/users/verify-security/'+username+'?securityQuestion='+payload.securityQuestion+'&&securityAnswer='+payload.securityAnswer;
+            const url = `${API_BASE}/users/verify-security/`+username+'?securityQuestion='+payload.securityQuestion+'&&securityAnswer='+payload.securityAnswer;
             const response = await HTTP.get(url,body)
             dispatch(verifyUserAction(response.data));
         }catch(error){
@@ -130,7 +132,7 @@ export const loginUser = (payload) => {
     return async (dispatch) => {
         let username = payload.username;
         try {
-            const url = 'http://localhost:9002/users/login/' + username;
+            const url = `${API_BASE}/users/login/` + username;
             const response = await HTTP.post(url, payload)
             //If the user logins successfully then a success response is returned.
             if (response.status === 200) {
@@ -150,7 +152,7 @@ export const updateUserDetails = (payload, callingComponent) => {
     return async (dispatch) => {
         let username = payload.uuid;
         try {
-            const url = 'http://localhost:9002/users/' + username;
+            const url = `${API_BASE}/users/` + username;
             const response = await HTTP.put(url, payload)
             if(response.status===200){
                 sessionStorage.setItem("user",JSON.stringify(response.data.user));
@@ -167,7 +169,7 @@ export const updateUserDetails = (payload, callingComponent) => {
 export const updateUserEventDetails = (uuid, payload, callingComponent) => {
     return async (dispatch) => {
         try {
-            const url = 'http://localhost:9002/users/save-event/' + uuid;
+            const url = `${API_BASE}/users/save-event/` + uuid;
             const response = await HTTP.put(url, payload)
             if(response.status===200){
                 sessionStorage.setItem("user",JSON.stringify(response.data.user));
@@ -184,7 +186,7 @@ export const updateUserEventDetails = (uuid, payload, callingComponent) => {
 export const updateUserInterestedEventDetails = (uuid, payload, callingComponent) => {
     return async (dispatch) => {
         try {
-            const url = 'http://localhost:9002/users/interested-event/' + uuid;
+            const url = `${API_BASE}/users/interested-event/` + uuid;
             const response = await HTTP.put(url, payload)
             if(response.status===200){
                 sessionStorage.setItem("user",JSON.stringify(response.data.user));
@@ -201,7 +203,7 @@ export const updateUserInterestedEventDetails = (uuid, payload, callingComponent
 export const updateUserEventUnregisterDetails = (uuid, payload, callingComponent) => {
     return async (dispatch) => {
         try {
-            const url = 'http://localhost:9002/users/unregister-event/' + uuid;
+            const url = `${API_BASE}/users/unregister-event/` + uuid;
             const response = await HTTP.put(url, payload)
             if(response.status===200){
                 sessionStorage.setItem("user",JSON.stringify(response.data.user));
@@ -218,7 +220,7 @@ export const updateUserEventUnregisterDetails = (uuid, payload, callingComponent
 export const updateUserEventUnbookmarkDetails = (uuid, payload, callingComponent) => {
     return async (dispatch) => {
         try {
-            const url = 'http://localhost:9002/users/unbookmark-event/' + uuid;
+            const url = `${API_BASE}/users/unbookmark-event/` + uuid;
             const response = await HTTP.put(url, payload)
             if(response.status===200){
                 sessionStorage.setItem("user",JSON.stringify(response.data.user));

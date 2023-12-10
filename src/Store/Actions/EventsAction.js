@@ -1,5 +1,7 @@
 import { HTTP } from "../../HTTP"
 import {showLoaderAction, hideLoaderAction} from './LoaderAction.js';
+const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:9002";
+
 export const EventsActionTypes = {
     ADD_EVENT : '[EventItem] Add Event item',
     UPDATE_EVENT : '[EventItem] Update Event item',
@@ -66,7 +68,7 @@ export const getEventBriteEvents = (inputText = "Badminton") => {
     return async (dispatch, getState) => { 
         try {
             dispatch(showLoaderAction())
-            const url = `http://localhost:9002/eventsData?eventName=${inputText}`
+            const url = `${API_BASE}/eventsData?eventName=${inputText}`
             const response = await HTTP.get(url);
             dispatch(setEventsData(response.data))
         } catch(ex) {

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import MiniLoader from "../../components/Loader/MiniLoader";
 import axios from "axios";
+const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:9002";
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     add: (url, payload) => dispatch(addTodoItemAction(url, payload))
@@ -41,7 +42,7 @@ export class BlogFormComponent extends Component {
           }
         }
         console.log(JSON.stringify(payload))
-        this.props.add("http://localhost:9002/blogsData/", payload)
+        this.props.add(`${API_BASE}/blogsData/`, payload)
       }
       //HTML Representation of the Blog Form
   render() {

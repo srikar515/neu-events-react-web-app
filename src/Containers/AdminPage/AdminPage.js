@@ -7,6 +7,7 @@ import { addEventAction, deleteEventAction } from "../../Store/Actions/EventsAct
 import { connect } from "react-redux";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:9002";
 
 
 const AdminPage= (props) => {
@@ -16,7 +17,7 @@ const AdminPage= (props) => {
   const dispatch = useDispatch();
   //Use effect tell what the Component should after render
   useEffect(() => {
-    fetch('http://localhost:9002/eventsData')
+    fetch(`${API_BASE}/eventsData`)
       .then((res) => res.json())
       .then((data) => {
         setData(data);
@@ -34,7 +35,7 @@ const AdminPage= (props) => {
 
   //Adds the event by getting the id,name,description,date,time,image and location url.
   const addEvent = async() => {
-    const url = "http://localhost:9002/eventsData"
+    const url = `${API_BASE}/eventsData`
     const id = document.getElementById('id').value;
     const name = document.getElementById('name').value;
     const description = document.getElementById('description').value;
@@ -91,7 +92,7 @@ const AdminPage= (props) => {
 
   //Deletes the event with the event id
   const deleteEvent = async(eventId) => {
-    const url = "http://localhost:9002/eventsData/" + eventId
+    const url = `${API_BASE}/eventsData/` + eventId
     const payload = {
       eventId : eventId
     }

@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import TextField from '@mui/material/TextField';
 import { AiOutlineClockCircle } from 'react-icons/ai';
 import { BsCalendar2Date, BsFillBookmarkFill } from 'react-icons/bs';
+const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:9002";
 
 // import { View, Image, Text, LayoutAnimation } from 'react-native';
 // import Icon from 'react-native-vector-icons/FontAwesome';
@@ -48,7 +49,7 @@ export default function App() {
 
   //Useefect to fetch the events dataupon rendering the page.
   useEffect(() => {
-    fetch('http://localhost:9002/eventsData')
+    fetch(`${API_BASE}/eventsData`)
       .then((res) => res.json())
       .then((data) => {
         setData(data);

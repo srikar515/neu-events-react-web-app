@@ -7,6 +7,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import EventSearchBar from './EventSearchBar/EventsSearchBar.js'
+const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:9002";
 
 
 const mapStoreToProps = (state) => ( state.eventlist ) 
@@ -31,7 +32,7 @@ class EventListComponent extends Component {
   
   //api call 
   callApi = () => {    
-    this.props.getEvents('http://localhost:9002/eventsData')
+    this.props.getEvents(`${API_BASE}/eventsData`)
   };
   
   render() {

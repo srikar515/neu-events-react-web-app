@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import { Navigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:9002";
 const mapStateToProps = (state) => ({
         isUserLoggedIn : state.Login.isUserLoggedIn,
         currentUserDetails : state.Login.currentUserDetails,
