@@ -7,6 +7,8 @@ import { addEventAction, updateEventAction} from "../../Store/Actions/EventsActi
 import { connect } from "react-redux";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:9002";
+
 const OrganizerPage= (props) => {
     //Navigate is used to moved from one location to another.
     const navigate = useNavigate();
@@ -14,7 +16,7 @@ const OrganizerPage= (props) => {
     const dispatch = useDispatch();
     //Use effect tell what the Component should after render
     useEffect(() => {
-        fetch('http://localhost:9002/eventsData')
+        fetch(`${API_BASE}/eventsData`)
             .then((res) => res.json())
             .then((data) => {
                 setData(data);
@@ -32,7 +34,7 @@ const OrganizerPage= (props) => {
 
     //Adds the event by getting the id,name,description,date,time,image and location url.
     const addEvent = async() => {
-        const url = "http://localhost:9002/eventsData"
+        const url = `${API_BASE}/eventsData`
         const id = document.getElementById('id').value;
         const name = document.getElementById('name').value;
         const description = document.getElementById('description').value;

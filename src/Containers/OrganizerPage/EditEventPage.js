@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { updateEventAction } from '../../Store/Actions/EventsAction';
 import './EditEventPage.scss';
+const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:9002";
 
 
 const EditEventPage = () => {
@@ -18,7 +19,7 @@ const EditEventPage = () => {
 
     useEffect(() => {
         // Fetch event data based on eventId
-        fetch(`http://localhost:9002/eventsData/${eventId}`)
+        fetch(`${API_BASE}/eventsData/${eventId}`)
             .then(res => res.json())
             .then(data => {
                 // Update the state with fetched event data
@@ -37,7 +38,7 @@ const EditEventPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const url = `http://localhost:9002/eventsData/${eventId}`;
+        const url = `${API_BASE}/eventsData/${eventId}`;
         dispatch(updateEventAction(url, eventData));
         navigate('/organizer'); // Navigate back to the organizer page
     };
