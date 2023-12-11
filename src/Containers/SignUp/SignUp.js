@@ -220,7 +220,8 @@ class SignUpComponent extends React.Component{
                     gender : this.state.gender,
                     password : this.state.password,
                     securityQuestion : this.state.securityQuestion,
-                    securityAnswer : this.state.securityAnswer
+                    securityAnswer : this.state.securityAnswer,
+                                          userType: this.state.userType,
                 });
             }
     }
