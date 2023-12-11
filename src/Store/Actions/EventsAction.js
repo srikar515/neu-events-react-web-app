@@ -43,6 +43,25 @@ export const addEventAction = (url, payload) => {
     }
 }
 
+export const updateEventAction = (url, updated_payload) => {
+    return dispatch => {
+        return fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updated_payload),
+        }).then(res => {
+            return res.json();
+        }).then(res => {
+            dispatch({type: EventsActionTypes.UPDATE_EVENT, updated_payload: res});
+        }).catch(err => {
+            console.log('API failed', err);
+        });
+    };
+};
+
+
 //Action Method to delete an event.
 export const deleteEventAction = (url, deleted_payload) => {
     return dispatch => {

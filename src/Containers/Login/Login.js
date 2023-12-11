@@ -78,24 +78,20 @@ class LoginComponent extends React.Component{
                 }
                 //Upon Successful login Navigate to User/Admin Page Accordingly
             render(){
-                        let loginError = '';
-                        if(this.props.isUserLoggedIn && this.props.currentUserDetails.roles[0] ==="admin"){
-                                //Notifies the user
-                            {this.notify()}
-                            return(
-                                //navigate to admin url
-                            <Navigate replace to="/admin">
-                            </Navigate>
-                            )
-                        }
-                        else if(this.props.isUserLoggedIn && this.props.currentUserDetails.roles[0] === "user"){
-                                {this.notify()}
-                                return(
-                                        //Navigates to user url
-                                <Navigate replace to="/">
-                                </Navigate>
-                                ) 
-                        }
+                let loginError = '';
+                if (this.props.isUserLoggedIn) {
+                    this.notify();
+
+                    // Redirect based on the userType
+                    const userType = this.props.currentUserDetails.userType;
+                    if (userType === 'organizer') {
+                        return <Navigate replace to="/organizer" />;
+                    } else if (userType === 'admin') {
+                        return <Navigate replace to="/admin"/>;
+                    } else{
+                        return <Navigate replace to="/" />; // Assuming this is the path for regular users
+                    }
+                }
                         //If the username is not found then no user found else password is incorrect
                         else if (this.props.loginError === 'No user found'){
                                         loginError  = "Sorry,there is no user with this username and password"

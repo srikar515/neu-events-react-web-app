@@ -1,0 +1,66 @@
+// Importing Google Fonts for Cambria-like font
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+// Define your color scheme here
+$primary-color: #4a90e2;  // Change as per your preference
+$secondary-color: #f5f5f5; // Light grey background
+$text-color: #333;
+$button-color: #e74c3c; // Red color for buttons
+$border-color: #ddd;
+
+// Mixin for hover effect
+@mixin button-hover($color) {
+  &:hover {
+    background-color: darken($color, 10%);
+  }
+}
+
+.edit-event-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: $secondary-color;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+
+  h2 {
+    color: $primary-color;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .edit-event-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    label {
+      font-size: 16px;
+      color: $text-color;
+      font-weight: bold;
+    }
+
+    input[type="text"], textarea {
+      padding: 10px;
+      border: 1px solid $border-color;
+      border-radius: 4px;
+      font-size: 14px;
+      background-color: transparent;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: $button-color;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+
+      // Apply the hover effect using the mixin
+      @include button-hover($button-color);
+    }
+  }
+}
