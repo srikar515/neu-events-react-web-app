@@ -38,7 +38,8 @@ class SignUpComponent extends React.Component{
             gender : '',
             password : '',
             securityQuestion : '',
-            securityAnswer : ''
+            securityAnswer : '',
+            userType: 'user',
         }
     }
     notify() {
@@ -319,6 +320,20 @@ class SignUpComponent extends React.Component{
                                     <input type="text" name="securityAnswer" className="form-input" placeholder="Please choose the answer to your question" value={this.state.answer} onChange={this.handleChange.bind(this)}/>
                                     {this.state.answerError && <p>{this.state.answerError}</p>}
                                 </div> 
+                            </div>
+                            <div className="userType">
+                                <FormControl fullWidth >
+                                    <InputLabel>User Type</InputLabel>
+                                    <Select
+                                        label="User Type"
+                                        name="userType"
+                                        value={this.state.userType}
+                                        onChange={(e) => this.setState({ userType: e.target.value })}
+                                    >
+                                        <MenuItem value="user">User</MenuItem>
+                                        <MenuItem value="organizer">Organizer</MenuItem>
+                                    </Select>
+                                </FormControl>
                             </div>
                             <div className="SignUp-Container">
                                 <div className="button-container">

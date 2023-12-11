@@ -13,6 +13,8 @@ import Calendar from "./Calendar/Calendar.js";
 import EventInfo from "./ExploreEvents/EventInfo/EventInfo.js";
 import AdminPage from './AdminPage/AdminPage.js'
 import HomeScreen from "./HomeScreen.js";
+import EditEventPage from "./OrganizerPage/EditEventPage";
+import OrganizerPage from './OrganizerPage/OrganizerPage';
 const RoutesComponent = (props) => {
   // let loggedInUserDetails = JSON.parse(sessionStorage.getItem("user"));
   // let eventslist = loggedInUserDetails["eventsRegistered"]
@@ -58,6 +60,13 @@ const RoutesComponent = (props) => {
         <Route path="/admin" element = {<ProtectedRoute/>}>
           <Route path="/admin" element = {<AdminPage/> }/>
         </Route>
+            <Route path="/edit-event/:eventId" element={<ProtectedRoute/>}>
+                <Route path="/edit-event/:eventId" element={<EditEventPage />} />
+            </Route>
+
+            <Route path="/organizer" element={<ProtectedRoute />}>
+                <Route path="/organizer" element={<OrganizerPage />} />
+            </Route>
 
         </Routes>
     </Router>
