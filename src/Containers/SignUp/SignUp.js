@@ -8,9 +8,11 @@ import securityQuestions from './SecurityQuestions';
 import {signUpUser} from '../../Store/Actions/LoginAction';
 import {connect} from 'react-redux';
 import './SignUp.scss';
-import { Navigate } from "react-router-dom";
+import { Navigate,Link } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
+
+
 import 'react-toastify/dist/ReactToastify.css';
 const WEB_URL= "https://neuevents.netlify.app"; 
 const LOCAL_URL="http://localhost:3000";
@@ -337,7 +339,7 @@ class SignUpComponent extends React.Component{
                                 <div className="button-container">
                                     <button type="submit">Join the club</button>
                                     {signUpError && <p>{signUpError}</p>}
-                                    <p>Already have an account? Login &nbsp;<a href="https://neuevents.netlify.app/login">here</a></p>
+                                    <p>Already have an account? Login &nbsp;<Link to="/login">here</Link></p>
                                 </div>
                             </div> 
                         </form>

@@ -2,10 +2,10 @@ import React  from "react";
 import './Login.scss';
 import {loginUser} from '../../Store/Actions/LoginAction';
 import {connect} from 'react-redux';
-import { Navigate } from "react-router-dom";
+import { Navigate,Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:3000";
+const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:9002";
 const mapStateToProps = (state) => ({
         isUserLoggedIn : state.Login.isUserLoggedIn,
         currentUserDetails : state.Login.currentUserDetails,
@@ -113,7 +113,7 @@ class LoginComponent extends React.Component{
                                                 <div className='right-inner'>
                                                         <form onSubmit={this.handleSubmit.bind(this)}>
                                                                 <h1>Login</h1>
-                                                                <p>Don't have an account yet?&nbsp;<a href="https://neuevents.netlify.app/SignUp">Sign Up!</a></p>
+                                                                <p>Don't have an account yet?&nbsp;<Link to="/signup">Sign Up!</Link></p>
                                                                 <br/>
                                                                 <div className="username-container">
                                                                         {/* <label><strong>Username</strong></label> */}
@@ -126,7 +126,7 @@ class LoginComponent extends React.Component{
                                                                         {this.state.passwordError && <p>{this.state.passwordError}</p>}
                                                                 </div>
                                                                 <div className="login-button-container">
-                                                                        <p><a href="https://neuevents.netlify.app/forgot-password">Forgot Password?</a></p>
+                                                                        <p><Link to="/forgot-password">Forgot Password?</Link></p>
                                                                         <button type="submit">Login</button>
                                                                         {loginError && <p>{loginError}</p>}
                                                                 </div>
