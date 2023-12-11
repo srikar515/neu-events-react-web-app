@@ -117,7 +117,7 @@ class LoginComponent extends React.Component{
                                                 <div className='right-inner'>
                                                         <form onSubmit={this.handleSubmit.bind(this)}>
                                                                 <h1>Login</h1>
-                                                                <p>Don't have an account yet?&nbsp;<a href="http://localhost:3000/SignUp">Sign Up!</a></p>
+                                                                <p>Don't have an account yet?&nbsp;<a href="/signup">Sign Up!</a></p>
                                                                 <br/>
                                                                 <div className="username-container">
                                                                         {/* <label><strong>Username</strong></label> */}
@@ -130,7 +130,7 @@ class LoginComponent extends React.Component{
                                                                         {this.state.passwordError && <p>{this.state.passwordError}</p>}
                                                                 </div>
                                                                 <div className="login-button-container">
-                                                                        <p><a href="http://localhost:3000/forgot-password">Forgot Password?</a></p>
+                                                                        <p><a href="/forgot-password">Forgot Password?</a></p>
                                                                         <button type="submit">Login</button>
                                                                         {loginError && <p>{loginError}</p>}
                                                                 </div>
