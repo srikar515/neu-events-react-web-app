@@ -8,8 +8,7 @@ import { connect } from "react-redux";
 import Notifications from "@mui/icons-material/Notifications";
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { useState } from "react";
-//import NotificationDialog from "../../Containers/NotificationDialog/NotificationDialog";
-//import EventNotificationContent from "../../Containers/NotificationDialog/EventNotificationContent";
+
 import { FaUserEdit, FaRegCalendarCheck, FaBloggerB} from "react-icons/fa"
 import { MdExplore } from "react-icons/md"
 import { BsFillStarFill } from "react-icons/bs"
@@ -25,14 +24,6 @@ const SideNav = (props) => {
       navigate("/home");
     }
   }
-
-  // const onClickOfNotififcation=()=>{
-  //   setOpenNotif(true);
-  // }
-
-  // const handleNotificationClose =()=>{
-  //   setOpenNotif(false);
-  // }
 
   //HTML Representation of Side Bar Navigation.
   return (
