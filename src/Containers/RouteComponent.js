@@ -37,8 +37,9 @@ const RoutesComponent = (props) => {
           <Route path="/admin" element = {<ProtectedRoute/>}>
             <Route path="/admin" element = {<AdminPage/> }/>
           </Route>
-          <Route path="/organizer" element={<OrganizerPage />} />
-          
+          <Route path="/organizer" element={<ProtectedRoute />}>
+              <Route path="/organizer" element={<OrganizerPage />} />
+          </Route>
             <Route element = {<SideNav/>}>
               <Route path="/profile" element = {<ProtectedRoute/>}>
                 <Route path="/profile" element = {<UserProfile/> }/>
