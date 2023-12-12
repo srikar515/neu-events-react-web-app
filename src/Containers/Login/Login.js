@@ -85,7 +85,7 @@ class LoginComponent extends React.Component{
                     // Redirect based on the userType
                     const userType = this.props.currentUserDetails.userType;
                     if (userType === 'organizer') {
-                        return <Navigate replace to="/organizer" />;
+                        return <Navigate to="/organizer" />;
                     } else if (userType === 'admin') {
                         return <Navigate replace to="/admin"/>;
                     } else{
