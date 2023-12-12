@@ -79,14 +79,6 @@ class AllEventsListComponent extends Component {
                     <p className="event-date"> <BsCalendar2Date />&#160; {event.eventDate} </p>
                     <p className="event-time"> <AiOutlineClockCircle /> {event.eventTime} </p>
                   </div>
-                  <div className='buttons' >
-                    <Link to={`/events/${event.eventId}`}>
-                      <button className="viewBtn">View</button>
-                    </Link>
-                    {/* <button  className = "viewBtn">View</button> */}
-                    <button onClick={() => this.callRegister(event.eventId)} className="registerBtn">Register</button>
-                    {/* <button onClick={() => callInterested(event.eventId)} className = "interestedBtn"><BsFillBookmarkCheckFill/></button> */}
-                  </div>
                 </div>
               </div>
             </div>
