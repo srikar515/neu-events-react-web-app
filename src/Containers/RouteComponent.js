@@ -30,46 +30,45 @@ const RoutesComponent = (props) => {
     return (
       <Router>
         <Routes>
-        <Route path="/login" element = {<Login/>} />
-        <Route path="/signup" element = {<SignUp/>} />
-        <Route path="/forgot-password" element = {<ForgotPassword/>} />
-        <Route path="/home" element = {<HomeScreen/>}/>
-          <Route element = {<SideNav/>}>
-            <Route path="/profile" element = {<ProtectedRoute/>}>
-              <Route path="/profile" element = {<UserProfile/> }/>
-            </Route> 
-            <Route path="/" element = {<ProtectedRoute/>}>
-              <Route path="/" element = {<ExploreEvents/> }/>
-            </Route>
-            <Route path="/myevents" element = {<ProtectedRoute/>}>
-              <Route path="/myevents" element = {<MyEvents/> }/>
-            </Route>
-            <Route path="/interestedevents" element = {<ProtectedRoute/>}>
-              <Route path="/interestedevents" element = {<InterestedEvents/> }/>
-            </Route>
-            <Route path="/blogs" element = {<ProtectedRoute/>}>
-              <Route path="/blogs" element = {<Blogs/> }/>
-            </Route>
-            <Route path="/events/:id" element = {<ProtectedRoute/>}>
-              <Route path="/events/:id" element = {<EventInfo/> }/>
-            </Route>
-            <Route path="/calendar" element = {<ProtectedRoute/>}>
-              <Route path="/calendar" element = {<Calendar/>}/>
-            </Route>  
-        </Route>
-        <Route path="/admin" element = {<ProtectedRoute/>}>
-          <Route path="/admin" element = {<AdminPage/> }/>
-        </Route>
-            <Route path="/edit-event/:eventId" element={<ProtectedRoute/>}>
-                <Route path="/edit-event/:eventId" element={<EditEventPage />} />
-            </Route>
-
-            <Route path="/organizer" element={<ProtectedRoute />}>
-                <Route path="/organizer" element={<OrganizerPage />} />
-            </Route>
+          <Route path="/login" element = {<Login/>} />
+          <Route path="/signup" element = {<SignUp/>} />
+          <Route path="/forgot-password" element = {<ForgotPassword/>} />
+          <Route path="/home" element = {<HomeScreen/>}/>
+          <Route path="/admin" element = {<ProtectedRoute/>}>
+            <Route path="/admin" element = {<AdminPage/> }/>
+          </Route>
+          <Route path="/organizer" element={<ProtectedRoute />}>
+              <Route path="/organizer" element={<OrganizerPage />} />
+          </Route>
+            <Route element = {<SideNav/>}>
+              <Route path="/profile" element = {<ProtectedRoute/>}>
+                <Route path="/profile" element = {<UserProfile/> }/>
+              </Route> 
+              <Route path="/" element = {<ProtectedRoute/>}>
+                <Route path="/" element = {<ExploreEvents/> }/>
+              </Route>
+              <Route path="/myevents" element = {<ProtectedRoute/>}>
+                <Route path="/myevents" element = {<MyEvents/> }/>
+              </Route>
+              <Route path="/interestedevents" element = {<ProtectedRoute/>}>
+                <Route path="/interestedevents" element = {<InterestedEvents/> }/>
+              </Route>
+              <Route path="/blogs" element = {<ProtectedRoute/>}>
+                <Route path="/blogs" element = {<Blogs/> }/>
+              </Route>
+              <Route path="/events/:id" element = {<ProtectedRoute/>}>
+                <Route path="/events/:id" element = {<EventInfo/> }/>
+              </Route>
+              <Route path="/calendar" element = {<ProtectedRoute/>}>
+                <Route path="/calendar" element = {<Calendar/>}/>
+              </Route>  
+          </Route>
+          <Route path="/edit-event/:eventId" element={<ProtectedRoute/>}>
+              <Route path="/edit-event/:eventId" element={<EditEventPage />} />
+          </Route>
 
         </Routes>
-    </Router>
+      </Router>
     )
   }
   export default RoutesComponent;
