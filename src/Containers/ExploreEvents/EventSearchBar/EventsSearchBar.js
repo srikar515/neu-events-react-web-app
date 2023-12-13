@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import './EventsSearchBar.scss'
 import { Link } from "react-router-dom";
 import { updateUserEventDetails, updateUserInterestedEventDetails, updateUserEventUnbookmarkDetails } from "../../../Store/Actions/LoginAction"
+import axios from "axios";
 
 import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from 'react-toastify';
@@ -19,6 +20,7 @@ export default function App() {
   let [filteredData, setFilteredData] = useState([]);
   const dispatch = useDispatch();
   const [isBookmarked, setIsBookmarked] = useState(false);
+  const textFieldRef = useRef(null);
 
   //Gets the logged in user details
   let loggedInUserDetails = JSON.parse(sessionStorage.getItem("user"));
@@ -47,6 +49,29 @@ export default function App() {
     }
   }
 
+  const fetchExternalEvents = async () => {
+    const options = {
+      method: 'GET',
+      url: 'https://concerts-artists-events-tracker.p.rapidapi.com/artist',
+      params: {
+        name: 'Ed sheeran',
+        page: '1'
+      },
+      headers: {
+        'X-RapidAPI-Key': '0efcfc4a58msh5080e380b5ac700p132982jsn18acd0f5e691',
+        'X-RapidAPI-Host': 'concerts-artists-events-tracker.p.rapidapi.com'
+      }
+    };
+
+    try {
+      const response = await axios.request(options);
+      return response.data; // Return the data received from the API
+    } catch (error) {
+      console.error(error);
+      return []; // Return an empty array in case of error
+    }
+  };
+
   //Useefect to fetch the events dataupon rendering the page.
   useEffect(() => {
     fetch(`${API_BASE}/eventsData`)
@@ -59,13 +84,21 @@ export default function App() {
   }, [isBookmarked]);
   useEffect(() => {
     if (searchParam !== "") {
-      const filteredData = data.filter(
-        (event) =>
-          event.eventName.toLowerCase().includes(searchParam.toLowerCase()) ||
-          event.eventDate.includes(searchParam) ||
-          event.eventTime.toLowerCase().includes(searchParam.toLowerCase())
-      );
-      setFilteredData([...filteredData]);
+      fetchExternalEvents()
+      .then((externalData) => {
+        const filteredData = data.filter(
+          (event) =>
+            event.eventName.toLowerCase().includes(searchParam.toLowerCase()) ||
+            event.eventDate.includes(searchParam) ||
+            event.eventTime.toLowerCase().includes(searchParam.toLowerCase())
+        );
+        
+        filteredData[0]['eventName']=externalData.data[0]['description'];
+        const mergedData = [...filteredData];
+        setFilteredData([...filteredData]);
+        setData(mergedData);
+        setFilteredData(mergedData);
+      }).catch((err) => console.log(err));
     } else {
       setFilteredData([...data]);
     }
@@ -83,10 +116,12 @@ export default function App() {
       <div className="search">
         <TextField
           className='search-bar'
-
+          inputRef={textFieldRef}
           label="&#128269; Search Events"
-          onChange={(e) => {
-            setSearchParam(e.target.value);
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              setSearchParam(textFieldRef.current.value); // Update searchParam on Enter press
+            }
           }}
           placeholder="search your event"
         >
