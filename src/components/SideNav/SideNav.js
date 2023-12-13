@@ -13,6 +13,7 @@ import { FaUserEdit, FaRegCalendarCheck, FaBloggerB} from "react-icons/fa"
 import { MdExplore } from "react-icons/md"
 import { BsFillStarFill } from "react-icons/bs"
 import { SiBloglovin } from "react-icons/si"
+import {AiFillHeart} from "react-icons/ai"
 
 const SideNav = (props) => {
   const navigate = useNavigate();
@@ -39,9 +40,9 @@ const SideNav = (props) => {
                     <Typography paddingRight={2} color='secondary.light'><FaUserEdit className="myprofile-icon" size="3.0vmin"/><Link to="/profile">Profile</Link></Typography>
                     <Typography paddingRight={2} color='secondary.light'><MdExplore className="explore-icon" size="3.0vmin"/><Link to="/">Explore</Link></Typography>
                     <Typography paddingRight={2} color='secondary.light'><BsFillStarFill className="myevents-icon" size="3.0vmin"/><Link to="/myevents">My Events</Link></Typography>
-                    {/* <Typography paddingRight={2} color='secondary.light'><RiBookmark3Fill className="myevents-icon" size="3.0vmin"/><Link to="/interestedevents">Interested Events</Link></Typography> */}
                     <Typography paddingRight={2} color='secondary.light'><FaRegCalendarCheck className="calendar-icon" size="3.0vmin"/><Link to="/calendar">Calendar</Link></Typography>
                     <Typography paddingRight={2} color='secondary.light'><SiBloglovin className="blogs-icon" size="3.0vmin"/><Link to="/blogs">Blogs</Link></Typography>
+                    
                     
                     <IconButton size={"large"} 
                     // children ={<Notifications className="notifications-btn"/>} 

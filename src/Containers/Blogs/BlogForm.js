@@ -14,6 +14,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 export class BlogFormComponent extends Component {
     constructor(props) {
         super(props)
+        this.loggedInUserDetails = JSON.parse(sessionStorage.getItem("user"));
         this.state = { 
             showForm: false
         }
@@ -23,21 +24,21 @@ export class BlogFormComponent extends Component {
     addNewBlog() {
         const title = document.getElementById('title').value;
         const description = document.getElementById('description').value;
-        const author = document.getElementById('author').value;
+        //const author = document.getElementById('author').value;
         const imgUrl = document.getElementById('imgUrl').value;
         let payload = {}
         if(!imgUrl){
            payload = {
             blogTitle: title,
             description: description,
-            author: author,
+            author: this.loggedInUserDetails["uuid"],
           }
         }
         else{
           payload = {
             blogTitle: title,
             description: description,
-            author: author,
+            author: this.loggedInUserDetails["uuid"],
             imgUrl: imgUrl
           }
         }
@@ -55,9 +56,7 @@ export class BlogFormComponent extends Component {
           <li>
             <textarea className="description" id="description" name="blog_description" placeholder='Write a blog...'></textarea>
           </li>
-          <li>
-            <input type="text" id="author" name="blog_author" placeholder='Author'/>
-          </li>
+          
           <li>
             <input type="url" className="imgUrl" id="imgUrl" name="blog_image" placeholder='Image Url'/>
           </li>

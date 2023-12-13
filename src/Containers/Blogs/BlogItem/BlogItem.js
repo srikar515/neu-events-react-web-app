@@ -2,6 +2,7 @@ import './BlogItem.scss'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ReadMore from './../ReadMore/ReadMore.js'
+import { Link } from "react-router-dom";
 
 //component to show details of selected to-do item
 export class BlogItemComponent extends Component {
@@ -20,7 +21,9 @@ export class BlogItemComponent extends Component {
                 {/*Read more Component is used for the Blog Description */}
                 <ReadMore id='blogdescription' className='blogdescription'>{this.props.blogitem.description}</ReadMore>
             </div>
-            <p>Author : {this.props.blogitem.author}</p>
+            <Link to={`/profile/${this.props.blogitem.author}`} className='author-profile'>
+                    <p>Author : {this.props.blogitem.author}</p>
+                </Link>
         </div>
         )
     }

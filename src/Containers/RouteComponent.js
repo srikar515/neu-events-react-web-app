@@ -7,6 +7,7 @@ import ExploreEvents from './ExploreEvents/ExploreEvents.js';
 import Blogs from './Blogs/Blogs.js'
 import {ProtectedRoute} from './ProtectedRoute.js';
 import UserProfile from './UserProfile/UserProfile.js';
+import BlogUserProfile from './UserProfile/BlogUserProfile.js';
 import MyEvents from "./MyEvents/MyEvents.js";
 import InterestedEvents from './MyEvents/InterestedEvents.js';
 import Calendar from "./Calendar/Calendar.js";
@@ -15,6 +16,7 @@ import AdminPage from './AdminPage/AdminPage.js'
 import HomeScreen from "./HomeScreen.js";
 import EditEventPage from "./OrganizerPage/EditEventPage";
 import OrganizerPage from './OrganizerPage/OrganizerPage';
+
 const RoutesComponent = (props) => {
   // let loggedInUserDetails = JSON.parse(sessionStorage.getItem("user"));
   // let eventslist = loggedInUserDetails["eventsRegistered"]
@@ -41,9 +43,12 @@ const RoutesComponent = (props) => {
               <Route path="/organizer" element={<OrganizerPage />} />
           </Route>
             <Route element = {<SideNav/>}>
+              <Route path="/profile/:uuid" element={<ProtectedRoute/>}>
+              <Route path="/profile/:uuid" element = {<BlogUserProfile/> }/>
+              </Route>
               <Route path="/profile" element = {<ProtectedRoute/>}>
                 <Route path="/profile" element = {<UserProfile/> }/>
-              </Route> 
+              </Route>
               <Route path="/" element = {<ProtectedRoute/>}>
                 <Route path="/" element = {<ExploreEvents/> }/>
               </Route>
