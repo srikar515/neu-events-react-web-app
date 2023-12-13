@@ -127,6 +127,8 @@ export const handleUserVerification = (payload) => {
     }
 }
 
+//
+
 //Method for Login of a User.
 export const loginUser = (payload) => {
     return async (dispatch) => {
@@ -263,3 +265,4 @@ export const setUserToStoreOnRefresh = (reduxUser) => {
         }
     }
 }
+

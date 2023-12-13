@@ -4,7 +4,7 @@ function Nav() {
  return (
    <nav>
     <div className="logo-image-container">
-        <img src="images/NULogo.png"></img>
+        <img className="image" src="images/NULogo.png"></img>
     </div>
     <h2 className="title">Welcome to NEU events</h2>
     <ul className="login-pages">

@@ -36,11 +36,12 @@
                     p {
                         @include display;
                         width: $width;
-                        .myprofile-icon, .explore-icon, .myevents-icon, .calendar-icon, .blogs-icon {
+                        .myprofile-icon, .explore-icon, .myevents-icon, .calendar-icon, .blogs-icon, .heart-icon {
                             color:$text-red;
                         }
                         svg {
                             width: 20%;
+                            padding-top: 9px;
                         }
                         a {
                             width: 70%;
