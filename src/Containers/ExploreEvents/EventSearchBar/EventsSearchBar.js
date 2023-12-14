@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 import './EventsSearchBar.scss'
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { updateUserEventDetails, updateUserInterestedEventDetails, updateUserEventUnbookmarkDetails } from "../../../Store/Actions/LoginAction"
 import axios from "axios";
 
 import { useDispatch } from "react-redux";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer} from 'react-toastify';
 import TextField from '@mui/material/TextField';
 import { AiOutlineClockCircle } from 'react-icons/ai';
 import { BsCalendar2Date, BsFillBookmarkFill } from 'react-icons/bs';
@@ -15,12 +15,14 @@ const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:9002";
 // import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function App() {
-  let [searchParam, setSearchParam] = useState("");
-  let [data, setData] = useState([]);
-  let [filteredData, setFilteredData] = useState([]);
+  const location = useLocation();
   const dispatch = useDispatch();
-  const [isBookmarked, setIsBookmarked] = useState(false);
   const textFieldRef = useRef(null);
+
+  const [searchParam, setSearchParam] = useState("");
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [isBookmarked, setIsBookmarked] = useState(false);
 
   //Gets the logged in user details
   let loggedInUserDetails = JSON.parse(sessionStorage.getItem("user"));
@@ -49,76 +51,100 @@ export default function App() {
     }
   }
 
-  const fetchExternalEvents = async (searchParam) => {
-    const options = {
-      method: 'GET',
-      url: 'https://concerts-artists-events-tracker.p.rapidapi.com/artist',
-      params: {
-        name: 'Ed sheeran',
-        page: '1'
-      },
-      headers: {
-        'X-RapidAPI-Key': '0efcfc4a58msh5080e380b5ac700p132982jsn18acd0f5e691',
-        'X-RapidAPI-Host': 'concerts-artists-events-tracker.p.rapidapi.com'
-      }
-    };
-
+  
+  const fetchExternalEvents = async (param) => {
+    // ... your implementation of fetchExternalEvents
+    // Return the external data
     try {
+      const options = {
+        method: 'GET',
+        url: 'https://concerts-artists-events-tracker.p.rapidapi.com/artist',
+        params: {
+          name: param,
+          page: '1'
+        },
+        headers: {
+          'X-RapidAPI-Key': '0efcfc4a58msh5080e380b5ac700p132982jsn18acd0f5e691',
+          'X-RapidAPI-Host': 'concerts-artists-events-tracker.p.rapidapi.com'
+        }
+      };
+
       const response = await axios.request(options);
-      return response.data; // Return the data received from the API
+      return response.data;
     } catch (error) {
-      console.error(error);
-      return []; // Return an empty array in case of error
+      console.error("Error fetching external events:", error);
+      return null;
     }
   };
 
   useEffect(() => {
-    const savedSearchParam = localStorage.getItem("searchParam");
-    if (savedSearchParam) {
-      setSearchParam(savedSearchParam);
-      textFieldRef.current.value = savedSearchParam;
+    const urlSearchParams = new URLSearchParams(location.search);
+    const urlSearchParam = urlSearchParams.get("search");
+    if (urlSearchParam) {
+      setSearchParam(urlSearchParam);
+      textFieldRef.current.value = urlSearchParam;
     }
 
-    fetch(`${API_BASE}/eventsData`)
-      .then((res) => res.json())
-      .then((eventsData) => {
+    fetchEventsData(); // Fetch data when component mounts
+  }, [location.search]);
+
+  const fetchEventsData = async () => {
+    try {
+      const response = await fetch(`${API_BASE}/eventsData`);
+      if (response.ok) {
+        const eventsData = await response.json();
         setData(eventsData);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+      } else {
+        console.error("Failed to fetch events data");
+      }
+    } catch (error) {
+      console.error("Error fetching events data:", error);
+    }
+  };
+
+  const handleSearch = async (param) => {
+    const searchParams = new URLSearchParams();
+    searchParams.set('search', param);
+    window.history.pushState({}, '', `?search=${param}`);
+    setSearchParam(param);
+
+    const externalData = await fetchExternalEvents(param);
+    filterData(param, externalData);
+  
+  };
+
+  const filterData = (param, externalData) => {
+    let filtered = [...data];
+    if (param.trim() !== "") {
+      filtered = data.filter(
+        (event) =>
+          event.eventName.toLowerCase().includes(param.toLowerCase()) ||
+          event.eventDate.includes(param) ||
+          event.eventTime.toLowerCase().includes(param.toLowerCase())
+      );
+    }
+
+    if (externalData && externalData.data && externalData.data.length > 0) {
+      //filtered[0]['eventName'] = externalData.data[0]['description'];
+      const externalResults = externalData.data.map((item) => ({
+        eventName: item.description,
+        eventImage: item.image,
+        eventDate:item.endDate
+        // Add other properties as needed from external data
+      }));
+      filtered = filtered.concat(externalResults);
+    }
+
+    setFilteredData(filtered);
+  };
 
   useEffect(() => {
-    const performSearch = async (param) => {
-      try {
-        let filteredData = [];
-        if (param !== "") {
-          const externalData = await fetchExternalEvents(param);
-          filteredData = data.filter(
-            (event) =>
-              event.eventName.toLowerCase().includes(param.toLowerCase()) ||
-              event.eventDate.includes(param) ||
-              event.eventTime.toLowerCase().includes(param.toLowerCase())
-          );
-
-          if (externalData && externalData.data && externalData.data.length > 0) {
-            filteredData[0]['eventName'] = externalData.data[0]['description'];
-          }
-        } else {
-          filteredData = [...data];
-        }
-        setFilteredData(filteredData);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    performSearch(searchParam);
+    filterData(searchParam);
   }, [searchParam, data]);
 
-  useEffect(() => {
-    localStorage.setItem("searchParam", searchParam);
-  }, [searchParam]);
 
+
+  
   console.log(eventsInterested)
 
   //HTML Representation of the Search Bar Functionality.
@@ -135,7 +161,7 @@ export default function App() {
           label="&#128269; Search Events"
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
-              setSearchParam(textFieldRef.current.value); // Update searchParam on Enter press
+              handleSearch(textFieldRef.current.value); // Update searchParam and URL on Enter press
             }
           }}
           placeholder="search your event"
