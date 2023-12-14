@@ -49,7 +49,7 @@ export default function App() {
     }
   }
 
-  const fetchExternalEvents = async () => {
+  const fetchExternalEvents = async (searchParam) => {
     const options = {
       method: 'GET',
       url: 'https://concerts-artists-events-tracker.p.rapidapi.com/artist',
@@ -84,7 +84,7 @@ export default function App() {
   }, [isBookmarked]);
   useEffect(() => {
     if (searchParam !== "") {
-      fetchExternalEvents()
+      fetchExternalEvents(searchParam)
       .then((externalData) => {
         const filteredData = data.filter(
           (event) =>

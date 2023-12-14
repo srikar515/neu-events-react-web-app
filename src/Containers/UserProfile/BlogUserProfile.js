@@ -34,11 +34,27 @@ function BlogUserProfile() {
 
     return (
         <div>
-            <h2>User Profile:</h2>
-            <p>UserName: {userDetails.uuid}</p>
-            <p>First Name: {userDetails.firstName}</p>
-            <p>Last Name: {userDetails.lastName}</p>
-            {/* Render other user details as needed */}
+            <h2>{userDetails.uuid} profile</h2>
+            <table border="1" width="100%">
+                <tbody>
+                    <tr>
+                        <td>UserName:</td>
+                        <td>{userDetails.uuid}</td>
+                    </tr>
+                    <tr>
+                        <td>First Name:</td>
+                        <td>{userDetails.firstName}</td>
+                    </tr>
+                    <tr>
+                        <td>Last Name:</td>
+                        <td>{userDetails.lastName}</td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td>{userDetails.email}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     );
 }
