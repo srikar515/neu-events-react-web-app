@@ -27,7 +27,6 @@ function BlogUserProfile() {
     if (!userDetails) {
         return (
             <div>
-                <h3>Error in fetching the data</h3>
             </div>
         );
     }
