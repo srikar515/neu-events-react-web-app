@@ -6,6 +6,8 @@ import SideNav from '../components/SideNav/SideNav.js';
 import ExploreEvents from './ExploreEvents/ExploreEvents.js';
 import Blogs from './Blogs/Blogs.js'
 import {ProtectedRoute} from './ProtectedRoute.js';
+import { AdminProtectedRoute } from "./AdminProtectedRoute.js";
+import { OrganizerProtectedRoute } from "./OrganizerProtectedRoute.js";
 import UserProfile from './UserProfile/UserProfile.js';
 import BlogUserProfile from './UserProfile/BlogUserProfile.js';
 import MyEvents from "./MyEvents/MyEvents.js";
@@ -36,10 +38,10 @@ const RoutesComponent = (props) => {
           <Route path="/signup" element = {<SignUp/>} />
           <Route path="/forgot-password" element = {<ForgotPassword/>} />
           <Route path="/home" element = {<HomeScreen/>}/>
-          <Route path="/admin" element = {<ProtectedRoute/>}>
+          <Route path="/admin" element = {<AdminProtectedRoute/>}>
             <Route path="/admin" element = {<AdminPage/> }/>
           </Route>
-          <Route path="/organizer" element={<ProtectedRoute />}>
+          <Route path="/organizer" element={<OrganizerProtectedRoute />}>
               <Route path="/organizer" element={<OrganizerPage />} />
           </Route>
             <Route element = {<SideNav/>}>
