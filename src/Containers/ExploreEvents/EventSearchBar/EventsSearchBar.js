@@ -72,36 +72,51 @@ export default function App() {
     }
   };
 
-  //Useefect to fetch the events dataupon rendering the page.
   useEffect(() => {
+    const savedSearchParam = localStorage.getItem("searchParam");
+    if (savedSearchParam) {
+      setSearchParam(savedSearchParam);
+      textFieldRef.current.value = savedSearchParam;
+    }
+
     fetch(`${API_BASE}/eventsData`)
       .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-        setFilteredData(data);
+      .then((eventsData) => {
+        setData(eventsData);
       })
       .catch((err) => console.log(err));
-  }, [isBookmarked]);
+  }, []);
+
   useEffect(() => {
-    if (searchParam !== "") {
-      fetchExternalEvents(searchParam)
-      .then((externalData) => {
-        const filteredData = data.filter(
-          (event) =>
-            event.eventName.toLowerCase().includes(searchParam.toLowerCase()) ||
-            event.eventDate.includes(searchParam) ||
-            event.eventTime.toLowerCase().includes(searchParam.toLowerCase())
-        );
-        
-        filteredData[0]['eventName']=externalData.data[0]['description'];
-        const mergedData = [...filteredData];
-        setFilteredData([...filteredData]);
-        setData(mergedData);
-        setFilteredData(mergedData);
-      }).catch((err) => console.log(err));
-    } else {
-      setFilteredData([...data]);
-    }
+    const performSearch = async (param) => {
+      try {
+        let filteredData = [];
+        if (param !== "") {
+          const externalData = await fetchExternalEvents(param);
+          filteredData = data.filter(
+            (event) =>
+              event.eventName.toLowerCase().includes(param.toLowerCase()) ||
+              event.eventDate.includes(param) ||
+              event.eventTime.toLowerCase().includes(param.toLowerCase())
+          );
+
+          if (externalData && externalData.data && externalData.data.length > 0) {
+            filteredData[0]['eventName'] = externalData.data[0]['description'];
+          }
+        } else {
+          filteredData = [...data];
+        }
+        setFilteredData(filteredData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    performSearch(searchParam);
+  }, [searchParam, data]);
+
+  useEffect(() => {
+    localStorage.setItem("searchParam", searchParam);
   }, [searchParam]);
 
   console.log(eventsInterested)
